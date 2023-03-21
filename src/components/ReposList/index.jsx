@@ -4,6 +4,7 @@ import styles from './ReposList.module.css'
 
 const ReposList = ({ nomeUsuario }) => {
     const [repos, setRepos] = useState([]);
+    const [deuErro, setDeuErro] = useState(false);
 
     useEffect(() => {
         fetch(`https://api.github.com/users/${nomeUsuario}/repos`)
@@ -16,12 +17,13 @@ const ReposList = ({ nomeUsuario }) => {
                 setDeuErro(true)
             })
     }, [nomeUsuario]);
-    
+
 
     return (
         <div className={styles.container}>
+            {deuErro && <p>{deuErro}</p>}
             <ul className={styles.list}>
-                {repos.map(({ id, name, language, html_url }) => (
+                {repos.length > 0 ? repos.map(({ id, name, language, html_url }) => (
                     <li className={styles.listItem} key={id}>
                         <div className={styles.itemName}>
                             <b>Nome:</b> {name}
@@ -33,7 +35,7 @@ const ReposList = ({ nomeUsuario }) => {
                             <a className={styles.itemLink} target="_blank" href={html_url}>Visitar no Github</a>
                         </div>
                     </li>
-                ))}
+                )) : <p>Digite um usuário existente no GitHub.</p>}
             </ul>
         </div>
     )

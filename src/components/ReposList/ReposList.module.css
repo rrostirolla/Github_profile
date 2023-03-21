@@ -4,6 +4,12 @@
     gap: 16px;
 }
 
+.list p {
+    margin-left: 32px;
+    font-weight: bold;
+    display: block;
+}
+
 .listItem {
     list-style: none;
     padding: 16px;
