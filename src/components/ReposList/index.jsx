@@ -35,7 +35,7 @@ const ReposList = ({ nomeUsuario }) => {
                             <a className={styles.itemLink} target="_blank" href={html_url}>Visitar no Github</a>
                         </div>
                     </li>
-                )) : <p>Usuário não encontrado. Por favor, digite um usuário existente no GitHub.</p>}
+                )) : <p>Usuário não encontrado. </br> Por favor, digite um usuário existente no GitHub.</p>}
             </ul>
         </div>
     )
